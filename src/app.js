@@ -2,6 +2,7 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+
 const express = require('express');
 const path = require('path');
 const mustacheExpress = require('mustache-express');
@@ -12,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Configure mustache
-app.set('views', `${__dirname}/pages`);
+app.set('views', path.join(__dirname, 'pages'));
 app.set('view engine', 'mustache');
 app.engine('mustache', mustacheExpress());
 
